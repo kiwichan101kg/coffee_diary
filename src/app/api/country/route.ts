@@ -1,16 +1,14 @@
-import { CoffeeReqest, CoffeeResponse } from "@/app/types";
+import { CoffeeResponse } from "@/app/types";
 import { supabase } from "@/app/utils/supabase";
 import { NextResponse } from "next/server";
 
-// 全取得
+// 産地国全取得
 export const GET = async (req: Request, res: NextResponse<CoffeeResponse>) => {
   try {
-    const coffee = await supabase
-      .from("coffee")
-      .select(`brand,country_id(name)`);
+    const country = await supabase.from("country").select(`*`);
 
     return NextResponse.json(
-      { message: "Success", data: coffee.data },
+      { message: "Success", data: country.data },
       { status: 200 }
     );
   } catch (error) {
@@ -18,11 +16,11 @@ export const GET = async (req: Request, res: NextResponse<CoffeeResponse>) => {
   }
 };
 
-// コーヒー登録API
+// 産地国登録API
 export const POST = async (req: Request, res: NextResponse) => {
   try {
-    const coffee: CoffeeReqest = await req.json();
-    const post = await supabase.from("coffee").insert(coffee);
+    const country = await req.json();
+    const post = await supabase.from("country").insert(country);
     return NextResponse.json({ message: "Success", post }, { status: 201 });
   } catch (error) {
     return NextResponse.json({ message: "Error", error }, { status: 500 });
