@@ -48,6 +48,12 @@ export type CoffeeResponse = {
   shop_id?: Shop;
 };
 
+export type AllCoffeeResponse = {
+  id: string;
+  brand: string;
+  country_id?: Coutry;
+};
+
 export type Coutry = {
   name: string;
 };

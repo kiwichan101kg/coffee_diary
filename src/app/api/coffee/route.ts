@@ -7,7 +7,7 @@ export const GET = async (req: Request, res: NextResponse<CoffeeResponse>) => {
   try {
     const coffee = await supabase
       .from("coffee")
-      .select(`brand,country_id(name)`);
+      .select(`id,brand,country_id(name)`);
 
     return NextResponse.json(
       { message: "Success", data: coffee.data },

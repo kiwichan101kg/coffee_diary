@@ -1,4 +1,3 @@
 .stack > * + * {
   margin-top: var(--stack-space, 1.5rem);
-  height: 50vh;
 }
