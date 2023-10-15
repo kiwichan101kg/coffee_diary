@@ -1,6 +1,8 @@
 import React from "react";
 import { AllCoffeeResponse } from "../types";
 import Link from "next/link";
+import CoffeeListPart from "./CoffeeListPart";
+import styles from "../styles/coffee-list.module.css";
 const fetchAllCoffee = async (): Promise<AllCoffeeResponse[]> => {
   const res = await fetch("http://localhost:3000/api/coffee", {
     method: "GET",
@@ -12,18 +14,11 @@ const fetchAllCoffee = async (): Promise<AllCoffeeResponse[]> => {
 
 const CoffeeList = async () => {
   const coffeeArr = await fetchAllCoffee();
-  console.log(coffeeArr);
-
   return (
     <section>
-      <ul>
+      <ul className={styles.gap}>
         {coffeeArr.map((v) => (
-          <li key={v.id}>
-            <Link href={`/coffee/${v.id}`}>
-              <p>{v.brand}</p>
-              <div>{v.country_id?.name}</div>
-            </Link>
-          </li>
+          <CoffeeListPart {...v} />
         ))}
       </ul>
     </section>

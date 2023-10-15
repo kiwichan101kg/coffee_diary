@@ -1,0 +1,11 @@
+.flexContainer {
+  composes: spaceBetween from "./utils.module.css";
+}
+
+.whiteContainer {
+  composes: flexContainer;
+  composes: default from "./container.module.css";
+  padding: 1rem;
+
+  background-color: var(--white);
+}
