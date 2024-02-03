@@ -1,4 +1,7 @@
 import Container from "@/app/components/Container";
+import Label from "@/app/components/atoms/Label";
+import LabelText from "@/app/components/atoms/LabelText";
+import Title from "@/app/components/atoms/Title";
 import { CoffeeResponse } from "@/app/types";
 import Image from "next/image";
 import React from "react";
@@ -8,22 +11,22 @@ const BasicInfo = (props: BasicInfoProps) => {
   const { brand, country_id, region_id, shop_id, picture } = props;
   return (
     <>
-      <h1>{brand}</h1>
-      <h3>産地</h3>
-      <p>{country_id?.name}</p>
-      <p>{region_id?.name}</p>
-      <h3>購入店舗</h3>
-      <p>{shop_id?.name}</p>
+      <Title>{brand}</Title>
+      <LabelText>
+        <Label tag>産地</Label>
+        <p>
+          {country_id?.name}　{region_id?.name}
+        </p>
+      </LabelText>
+
+      <LabelText>
+        <Label tag>購入店舗</Label>
+        <p>{shop_id?.name}</p>
+      </LabelText>
 
       {picture && picture.length > 0 && (
         <div style={{ position: "relative", width: "300px", height: "300px" }}>
-          <Image
-            src={picture[0]}
-            alt={""}
-            layout="fill"
-            // width={500}
-            // height={500}
-          ></Image>
+          <Image src={picture[0]} alt={""} layout="fill"></Image>
         </div>
       )}
     </>

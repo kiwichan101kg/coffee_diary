@@ -17,9 +17,9 @@ const CoffeeList = async () => {
   return (
     <section>
       <ul className={styles.gap}>
-        {coffeeArr.map((v) => (
-          <CoffeeListPart {...v} />
-        ))}
+        {coffeeArr &&
+          coffeeArr.length !== 0 &&
+          coffeeArr.map((v) => <CoffeeListPart {...v} key={v.id} />)}
       </ul>
     </section>
   );

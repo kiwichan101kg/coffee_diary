@@ -3,6 +3,7 @@ import BasicInfo from "./BasicInfo";
 import Characteristics from "./Characteristics";
 import { CoffeeResponse } from "@/app/types";
 import Container from "@/app/components/Container";
+import PostBody from "@/app/components/PostBody";
 
 const fetchCoffee = async (id: string): Promise<CoffeeResponse> => {
   const res = await fetch(`http://localhost:3000/api/coffee/${id}`, {
@@ -20,8 +21,10 @@ const page = async ({ params }: { params: { id: string } }) => {
   return (
     <>
       <Container>
-        <BasicInfo {...coffeeInfo} />
-        <Characteristics {...coffeeInfo} />
+        <PostBody>
+          <BasicInfo {...coffeeInfo} />
+          <Characteristics {...coffeeInfo} />
+        </PostBody>
       </Container>
     </>
   );

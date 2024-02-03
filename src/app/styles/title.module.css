@@ -1,0 +1,7 @@
+.basic {
+  color: var(--brack);
+  /* font-family: "Courier New", Courier, monospace; */
+  font-weight: bold; /* ボールドフォント */
+  /* padding: 0rem 2rem;
+  border-left: 4px solid var(--brown-75); */
+}

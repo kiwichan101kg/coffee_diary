@@ -1,7 +1,7 @@
 import React, { ReactElement, ReactNode } from "react";
 import styles from "../styles/container.module.css";
 
-const Container = ({
+export const Container = ({
   large = false,
   children,
 }: {
